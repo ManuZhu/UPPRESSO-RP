@@ -26,6 +26,8 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Random;
 
+import org.fisco.bcos.groupsig.app.Main;
+
 
 @RestController
 public class UPPRESSOController {
@@ -54,7 +56,7 @@ public class UPPRESSOController {
         LoginInstance loginInstance = new LoginInstance();
 
         ECPoint PointClientId = ecp.getCurve().decodePoint(Util.hexString2Bytes(Configuration.hexID_RP));
-        String PClientID = Util.bytes2HexString(PointClientId.multiply(new BigInteger(t, 16)).getEncoded());
+        String PClientID = Util.bytes2HexString(PointClientId.multiply(new BigInteger(t, 16)).getEncoded(false));
 
         loginInstance.setT(t);
         loginInstance.setPID_RP(PClientID);

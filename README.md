@@ -1,11 +1,11 @@
-#UPRESSO-RP
+# UPRESSO-RP
 
-##Build
+## Build
 
 Install IntelliJ Idea and open the project
 
-##Quickstart
+## Quickstart
 
 Run in application mode
 
-then check `localhost:8090`
+then check ` localhost:8090 `

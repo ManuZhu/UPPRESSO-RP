@@ -32,9 +32,9 @@ public class HelloController {
 
 
     @RequestMapping(value = "/authorization", method = RequestMethod.POST)
-    public String authorization(@RequestBody String body, HttpServletRequest request, HttpSession session, HttpServletResponse response){
+    public String authorization(@RequestBody String body, HttpServletRequest request, HttpSession session, HttpServletResponse response) throws Exception {
         System.out.println("/authorization");
-        UPPRESSOInstance.receiveToken(request, body);
+        UPPRESSOInstance.receiveCode(request, body);
         UPPRESSOToken token = UPPRESSOInstance.getToken();
         if(token.isValid()) {
             System.out.println(token.getSubject());

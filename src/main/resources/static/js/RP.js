@@ -7,8 +7,8 @@ function onReceiveMessage(event) {
         case "start":
             onReceiveT(message.t)
             break
-        case "token":
-            onReceiveToken(message.Token)
+        case "code":
+            onReceiveCode(message.Code)
     }
 
 }
@@ -69,7 +69,7 @@ function onReceiveAuthenticationResult(xmlhttp){
             let text = document.getElementById("text");
             text.innerHTML = "Welcome, " + data.username
             setTimeout(function() {
-                    alert("Authentication Accomplished")
+                alert("Authentication Accomplished")
             }, 0)
 
         }else if (data.result == "register"){
@@ -81,7 +81,7 @@ function onReceiveAuthenticationResult(xmlhttp){
     }
 }
 
-function onReceiveToken(Token){
+function onReceiveCode(Code){
     let url = RPOrigin + "/authorization"
     let xmlhttp = initXML();
 
@@ -90,12 +90,10 @@ function onReceiveToken(Token){
         onReceiveAuthenticationResult(xmlhttp)
 
     }
-    let body = {"Token": Token}
+    let body = {"Code": Code}
     xmlhttp.open("POST", url, true);
     xmlhttp.send(JSON.stringify(body));
 }
-
-
 
 function onReceiveCert_RP(xmlhttp)
 {
@@ -124,8 +122,6 @@ function onReceiveT(t){
     xmlhttp.send(JSON.stringify(body));
 }
 
-
-
 function startSSO()
 {
     window.addEventListener('message', onReceiveMessage);
@@ -137,8 +133,3 @@ function startSSO()
 }
 
 startSSO();
-
-
-
-
-
