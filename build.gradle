@@ -1,6 +1,8 @@
 buildscript {
     repositories {
+        jcenter()
         mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.5.RELEASE")
@@ -19,6 +21,7 @@ bootJar {
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
@@ -26,10 +29,11 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
+//  compile('org.fisco.bcos.groupsig:group-signature-client:1.0.0')
     compile("org.springframework.boot:spring-boot-starter-web")
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.auth0:java-jwt:3.8.1'
-//    compile("org.springframework.session:spring-session:1.3.0.RELEASE")
+//  compile("org.springframework.session:spring-session:1.3.0.RELEASE")
     testCompile("junit:junit")
     compile 'commons-codec:commons-codec:1.14'
     compile 'com.alibaba:fastjson:1.2.76'
